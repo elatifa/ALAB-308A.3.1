@@ -1,6 +1,5 @@
-
- // Step 1: Get the database name from the central database
- const central = async (id) => {
+// Step 1: Get the database name from the central database
+const central = async (id) => {
     // Simulate a database query
     const dbName = await new Promise((resolve) => {
       setTimeout(() => {
@@ -16,9 +15,10 @@
     });
     return dbName;
   };
- // Define the databases (db1, db2, and db3) as Promise-based functions
-
- const db1 = async (id) => {
+  
+  // Define the databases (db1, db2, and db3) as Promise-based functions
+  
+  const db1 = async (id) => {
     const userInfo = await new Promise((resolve) => {
       setTimeout(() => {
         resolve({
@@ -32,7 +32,6 @@
   };
   
   const db2 = async (id) => {
-    
     const userInfo = await new Promise((resolve) => {
       setTimeout(() => {
         resolve({
@@ -60,19 +59,19 @@
   
   // Create an object to store the databases
   async function main() {
-  const dbs = {
-    db1,
-    db2,
-    db3,
-  }
-  };
+    const dbs = {
+      db1,
+      db2,
+      db3,
+    }
   
-  const dbName = 'db1'; // Replace with the actual database name
-  const id = 1; // Replace with the actual user ID
-
-  const basicInfo = await dbs[dbName](id);
-  console.log(basicInfo);
-
-main().catch((err) => {
-  console.error(err);
-});
+    const dbName = await central(1); // Replace with the actual user ID
+    const id = 1; // Replace with the actual user ID
+  
+    const basicInfo = await dbs[dbName](id);
+    console.log(basicInfo);
+  }
+  
+  main().catch((err) => {
+    console.error(err);
+  });
